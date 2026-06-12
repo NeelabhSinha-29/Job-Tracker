@@ -1,0 +1,20 @@
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+
+  backend:
+    ports:
+      - "8000:8000"
+    environment:
+      ALLOWED_ORIGINS: http://127.0.0.1:3000,http://localhost:3000,http://localhost
+
+  frontend:
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:8000
+
+  nginx:
+    profiles:
+      - prod
